@@ -424,9 +424,16 @@ if(UNIX)
         dl
     )
 
-    add_custom_command(TARGET PXREARobotSDK
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/libPXREARobotSDK.so" ${INSTALL_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy "${PROJECT_SOURCE_DIR}/PXREARobotSDK.h" ${PROJECT_SOURCE_DIR}/../SDK/include/
+    # add_custom_command(TARGET PXREARobotSDK
+    #     POST_BUILD
+    #     COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/libPXREARobotSDK.so" ${INSTALL_DIR}
+    #     COMMAND ${CMAKE_COMMAND} -E copy "${PROJECT_SOURCE_DIR}/PXREARobotSDK.h" ${PROJECT_SOURCE_DIR}/../SDK/include/
+    # )
+
+    install(TARGETS PXREARobotSDK
+        LIBRARY DESTINATION lib
+    )
+    install(FILES "${PROJECT_SOURCE_DIR}/PXREARobotSDK.h"
+        DESTINATION include
     )
 endif()
